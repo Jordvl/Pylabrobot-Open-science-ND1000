@@ -69,8 +69,12 @@ class NanoDrop1000:
 
     def set_integration_time(self, ms):
         """Sets exposure time (Valid range: 3 to 65535 ms)"""
-        if ms < 3: ms = 3, print('integration too low setting 3 ms')
-        if ms>65535: ms = 65535, print('integration too high setting 65535 ms')
+        if ms < 3:
+            ms = 3
+            print('Integration too low, setting to 3 ms')
+        elif ms > 65535:
+            ms = 65535
+            print('Integration too high, setting to 65535 ms')
         # Convert to 16-bit little-endian bytes
         lsb = ms & 0xFF
         msb = (ms >> 8) & 0xFF
